@@ -17,7 +17,9 @@
     "build:webui": "run-s build:webui:*",
     "build:webui:download": "npx ipfs-or-gateway -c bafybeigkbbjnltbd4ewfj7elajsbnjwinyk6tiilczkqsibf3o7dcr6nn4 -p assets/webui/ -t 360000 --verbose",
     "build:webui:minimize": "shx rm -rf assets/webui/static/js/*.map && shx rm -rf assets/webui/static/css/*.map",
-    "build:binaries": "electron-builder --publish onTag"
+    "build:binaries": "electron-builder --publish onTag",
+    "prepare": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "pre-commit": [
     "lint"
@@ -100,6 +102,8 @@
     "v8-compile-cache": "^2.1.0",
     "which": "^2.0.2",
     "winston": "^3.2.1",
-    "yargs": "^15.3.1"
-  }
+    "yargs": "^15.3.1",
+    "@snyk/protect": "latest"
+  },
+  "snyk": true
 }
